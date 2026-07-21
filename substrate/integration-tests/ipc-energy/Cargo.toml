@@ -1,0 +1,16 @@
+[package]
+name = "ipc-energy"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "Integration test: IPC send/recv preserves energy accounting"
+publish = false
+
+[[bin]]
+name = "ipc-energy"
+path = "src/main.rs"
+
+[dependencies]
+kernel-glue = { path = "../../kernel-glue" }
+field-core = { path = "../../field-core" }

@@ -1,0 +1,33 @@
+# Build artifacts
+target/
+*.pdb
+*.d
+*.exe
+*.lib
+*.rmeta
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Rust specific
+Cargo.lock
+
+# ZCode memory
+.zcode/
+.zcode-memory/
+
+# Patch work
+.patch-work/
+
+# Artifacts
+artifacts/
+
+# Logs
+*.log

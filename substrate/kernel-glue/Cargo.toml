@@ -1,0 +1,19 @@
+[package]
+name = "kernel-glue"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "no_std policy layer mapping field-core onto OS concepts"
+publish = false
+
+[lib]
+name = "kernel_glue"
+path = "src/lib.rs"
+
+[dependencies]
+field-core = { path = "../field-core", default-features = false }
+spin = { version = "0.9", default-features = false, features = ["spin_mutex"] }
+
+[features]
+default = []

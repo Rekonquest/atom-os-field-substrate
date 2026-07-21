@@ -1,0 +1,16 @@
+[package]
+name = "closed-energy"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "Integration test: closed invariant holds through kernel-glue"
+publish = false
+
+[[bin]]
+name = "closed-energy"
+path = "src/main.rs"
+
+[dependencies]
+kernel-glue = { path = "../../kernel-glue" }
+field-core = { path = "../../field-core" }

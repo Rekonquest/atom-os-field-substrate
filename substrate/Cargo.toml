@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+members = [
+    "field-core",
+    "field-std",
+    "kernel-glue",
+    "host-harness",
+    "integration-tests/closed-energy",
+    "integration-tests/ipc-energy",
+    "integration-tests/scheduler-determinism",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "Radiation/dissipation field substrate bridged into Atom OS"
+publish = false
+
+[workspace.dependencies]
+field-core = { path = "field-core" }
+field-std = { path = "field-std" }
+kernel-glue = { path = "kernel-glue" }
+libm = "0.2"
+spin = { version = "0.9", default-features = false, features = ["spin_mutex"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

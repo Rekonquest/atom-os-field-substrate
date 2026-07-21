@@ -1,0 +1,15 @@
+[package]
+name = "host-harness"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "Host-side falsify/sweep harness for field-core + kernel-glue"
+publish = false
+
+[[bin]]
+name = "host-harness"
+path = "src/main.rs"
+
+[dependencies]
+field-core = { path = "../field-core" }

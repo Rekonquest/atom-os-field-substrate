@@ -1,0 +1,16 @@
+[package]
+name = "scheduler-determinism"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "Integration test: same seed -> same scheduler selection sequence"
+publish = false
+
+[[bin]]
+name = "scheduler-determinism"
+path = "src/main.rs"
+
+[dependencies]
+kernel-glue = { path = "../../kernel-glue" }
+field-core = { path = "../../field-core" }

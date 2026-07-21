@@ -1,0 +1,15 @@
+[package]
+name = "field-std"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "std-only facade re-exporting field-core for host tests and harnesses"
+publish = false
+
+[lib]
+name = "field_std"
+path = "src/lib.rs"
+
+[dependencies]
+field-core = { path = "../field-core" }

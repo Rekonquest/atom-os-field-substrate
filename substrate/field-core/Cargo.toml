@@ -1,0 +1,21 @@
+[package]
+name = "field-core"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["Atom OS bridge"]
+description = "no_std + alloc port of the universum radiation/dissipation field"
+publish = false
+
+[lib]
+name = "field_core"
+path = "src/lib.rs"
+
+[dependencies]
+libm = "0.2"
+
+[features]
+default = []
+# Hand-rolled transcendentals; used if libm diverges from std math enough
+# to break the closed-invariant test.
+taylor-fallback = []
