@@ -1,0 +1,35 @@
+{
+  "name": "ATOM OS Field Substrate",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "bierner.markdown-preview-github-styles"
+      ],
+      "settings": {
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        }
+      }
+    }
+  },
+  "forwardPorts": [3000, 8080],
+  "portsAttributes": {
+    "3000": {
+      "label": "App",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "cargo check --workspace",
+  "postStartCommand": "echo 'Dev container ready. Run tests with: cd substrate && cargo test --workspace --release'",
+  "remoteUser": "vscode",
+  "containerUser": "vscode"
+}

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace:cached
+    command: sleep infinity
+    user: vscode
+
+  # Optional: QEMU service for kernel testing
+  qemu:
+    image: ghcr.io/qemu/qemu:latest
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/kvm
+    volumes:
+      - .:/workspace:ro
+    command: ["qemu-system-x86_64", "-nographic", "-serial", "mon:stdio"]
+    profiles:
+      - qemu
