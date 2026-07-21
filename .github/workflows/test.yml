@@ -1,0 +1,57 @@
+name: ATOM OS Field Substrate Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Run all tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          components: rust-src
+          target: x86_64-unknown-linux-gnu
+
+      - name: Cache cargo registry
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ~/.cargo/bin
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Install libm dependency
+        run: sudo apt-get update && sudo apt-get install -y libm-dev
+
+      - name: Run workspace tests
+        working-directory: substrate
+        run: cargo test --workspace --release
+
+      - name: Run host-harness falsify
+        working-directory: substrate
+        run: cargo run -p host-harness --release -- falsify
+
+      - name: Run closed-energy integration test
+        working-directory: substrate
+        run: cargo run -p closed-energy --release
+
+      - name: Run ipc-energy integration test
+        working-directory: substrate
+        run: cargo run -p ipc-energy --release
+
+      - name: Run scheduler-determinism integration test
+        working-directory: substrate
+        run: cargo run -p scheduler-determinism --release
